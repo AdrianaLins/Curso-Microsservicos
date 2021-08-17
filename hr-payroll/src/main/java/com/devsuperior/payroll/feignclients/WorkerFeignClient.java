@@ -11,9 +11,9 @@ import com.devsuperior.payroll.entities.Worker;
 
 
 @Component //vai ser um componente gerenciado pelo spring, vai injetar ele em outras classes
-@FeignClient(name = "hr-worker", url = "localhost:8001", path = "/workers")
+@FeignClient(name = "hr-worker", path = "/workers")
 public interface WorkerFeignClient {
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Worker> findById(@PathVariable Long id);
+	ResponseEntity<Worker> findById(@PathVariable Long id);
 }
