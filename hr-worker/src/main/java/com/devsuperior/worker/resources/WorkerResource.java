@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.devsuperior.worker.entities.Worker;
 import com.devsuperior.worker.repositories.WorkerRepository;
 
+
 @RefreshScope
 @RestController
 @RequestMapping(value = "/workers")
@@ -24,14 +25,20 @@ public class WorkerResource {
 	
 	private static Logger logger = LoggerFactory.getLogger(WorkerResource.class);
 	
-	@Value("${test.config}")
-	private String testeConfig;
+	//@Value("${test.config}")
+	//private String testeConfig;
 	
 	@Autowired
 	private Environment env; //informações da aplicação
 	
 	@Autowired
 	private WorkerRepository repository;
+	
+	//@GetMapping(value = "/configs")
+	//public ResponseEntity<Void> getConfigs() {
+		//logger.info("CONFIG = " + testeConfig);
+		//return ResponseEntity.noContent().build();
+	//}
 	
 	@GetMapping
 	public ResponseEntity<List<Worker>> findAll() {
@@ -48,11 +55,7 @@ public class WorkerResource {
 		return ResponseEntity.ok(obj);
 	}
 	
-	@GetMapping(value = "/configs")
-	public ResponseEntity<Void> getConfigs() {
-		logger.info("CONFIG = " + testeConfig);
-		return ResponseEntity.noContent().build();
-	}
+	
 	
 	
 	
